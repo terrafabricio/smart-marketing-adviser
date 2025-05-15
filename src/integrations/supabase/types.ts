@@ -58,16 +58,27 @@ export type Database = {
         Row: {
           api_key: string
           api_name: string
+          user_id: string
         }
         Insert: {
           api_key: string
           api_name: string
+          user_id?: string
         }
         Update: {
           api_key?: string
           api_name?: string
+          user_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "api_keys_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       campaign_metrics: {
         Row: {
@@ -83,6 +94,7 @@ export type Database = {
           id: string
           impressions: number | null
           roas: number | null
+          user_id: string
         }
         Insert: {
           campaign_id?: string | null
@@ -97,6 +109,7 @@ export type Database = {
           id?: string
           impressions?: number | null
           roas?: number | null
+          user_id?: string
         }
         Update: {
           campaign_id?: string | null
@@ -111,6 +124,7 @@ export type Database = {
           id?: string
           impressions?: number | null
           roas?: number | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -118,6 +132,13 @@ export type Database = {
             columns: ["campaign_id"]
             isOneToOne: false
             referencedRelation: "campaigns"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "campaign_metrics_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
             referencedColumns: ["id"]
           },
         ]
@@ -131,7 +152,7 @@ export type Database = {
           platform: string | null
           start_date: string | null
           status: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           created_at?: string | null
@@ -141,7 +162,7 @@ export type Database = {
           platform?: string | null
           start_date?: string | null
           status?: string | null
-          user_id?: string | null
+          user_id: string
         }
         Update: {
           created_at?: string | null
@@ -151,7 +172,7 @@ export type Database = {
           platform?: string | null
           start_date?: string | null
           status?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -169,21 +190,21 @@ export type Database = {
           message: string
           role: string
           timestamp: string | null
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           id?: string
           message: string
           role: string
           timestamp?: string | null
-          user_id?: string | null
+          user_id: string
         }
         Update: {
           id?: string
           message?: string
           role?: string
           timestamp?: string | null
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -204,7 +225,7 @@ export type Database = {
           last_synced: string | null
           refresh_token: string | null
           service: string
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           access_token?: string | null
@@ -214,7 +235,7 @@ export type Database = {
           last_synced?: string | null
           refresh_token?: string | null
           service: string
-          user_id?: string | null
+          user_id: string
         }
         Update: {
           access_token?: string | null
@@ -224,7 +245,7 @@ export type Database = {
           last_synced?: string | null
           refresh_token?: string | null
           service?: string
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: [
           {
@@ -266,7 +287,9 @@ export type Database = {
     }
     Functions: {
       save_api_keys: {
-        Args: { api_name: string; api_key: string }
+        Args:
+          | { api_name: string; api_key: string }
+          | { key: string; meta: Json }
         Returns: undefined
       }
     }

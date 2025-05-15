@@ -8,37 +8,56 @@ import Index from "./pages/Index";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
-import DashboardPage from "./pages/DashboardPage";
-import ComingSoonPage from "./pages/ComingSoonPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ComingSoonPage from "./pages/ComingSoonPage";
+import { AuthProvider } from "./contexts/AuthContext";
+
+// Dashboard pages
+import DashboardIndex from "./pages/dashboard/DashboardIndex";
+import CampaignsPage from "./pages/dashboard/CampaignsPage";
+import AnalyticsPage from "./pages/dashboard/AnalyticsPage";
+import IntegrationsPage from "./pages/dashboard/IntegrationsPage";
+import ProfilePage from "./pages/dashboard/ProfilePage";
+import SettingsPage from "./pages/dashboard/SettingsPage";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/reset-password" element={<ResetPasswordPage />} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/features" element={<ComingSoonPage />} />
-          <Route path="/pricing" element={<ComingSoonPage />} />
-          <Route path="/about" element={<ComingSoonPage />} />
-          <Route path="/contact" element={<ComingSoonPage />} />
-          <Route path="/careers" element={<ComingSoonPage />} />
-          <Route path="/terms" element={<ComingSoonPage />} />
-          <Route path="/privacy" element={<ComingSoonPage />} />
-          <Route path="/cookies" element={<ComingSoonPage />} />
-          <Route path="/support" element={<ComingSoonPage />} />
-          <Route path="/integrations/:platform" element={<ComingSoonPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
+            
+            {/* Dashboard routes */}
+            <Route path="/dashboard" element={<DashboardIndex />} />
+            <Route path="/dashboard/campaigns" element={<CampaignsPage />} />
+            <Route path="/dashboard/analytics" element={<AnalyticsPage />} />
+            <Route path="/dashboard/integrations" element={<IntegrationsPage />} />
+            <Route path="/dashboard/profile" element={<ProfilePage />} />
+            <Route path="/dashboard/settings" element={<SettingsPage />} />
+            
+            {/* Static pages */}
+            <Route path="/features" element={<ComingSoonPage />} />
+            <Route path="/pricing" element={<ComingSoonPage />} />
+            <Route path="/about" element={<ComingSoonPage />} />
+            <Route path="/contact" element={<ComingSoonPage />} />
+            <Route path="/careers" element={<ComingSoonPage />} />
+            <Route path="/terms" element={<ComingSoonPage />} />
+            <Route path="/privacy" element={<ComingSoonPage />} />
+            <Route path="/cookies" element={<ComingSoonPage />} />
+            <Route path="/support" element={<ComingSoonPage />} />
+            <Route path="/integrations/:platform" element={<ComingSoonPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

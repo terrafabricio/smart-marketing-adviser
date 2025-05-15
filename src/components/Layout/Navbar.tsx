@@ -1,18 +1,35 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Bot, LogIn, User } from "lucide-react";
+import { Bot, LogIn, LogOut, Settings, User } from "lucide-react";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/contexts/AuthContext";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Navbar = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/");
+  };
+
+  const getInitials = (name: string) => {
+    if (!name) return "U";
+    const parts = name.split(/\s+/);
+    if (parts.length === 1) return parts[0][0].toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -25,27 +42,64 @@ const Navbar = () => {
         
         {isDesktop ? (
           <nav className="flex items-center gap-6">
-            <Link to="/features" className="text-muted-foreground hover:text-foreground transition-colors">
-              Recursos
-            </Link>
-            <Link to="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
-              Preços
-            </Link>
-            <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-              Sobre
-            </Link>
-            <Link to="/login">
-              <Button variant="outline" size="sm" className="mr-2">
-                <LogIn className="h-4 w-4 mr-2" />
-                Entrar
-              </Button>
-            </Link>
-            <Link to="/signup">
-              <Button size="sm" className="bg-advisor-purple hover:bg-advisor-vivid-purple">
-                <User className="h-4 w-4 mr-2" />
-                Cadastre-se
-              </Button>
-            </Link>
+            {!user ? (
+              <>
+                <Link to="/features" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Recursos
+                </Link>
+                <Link to="/pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Preços
+                </Link>
+                <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Sobre
+                </Link>
+                <Link to="/login">
+                  <Button variant="outline" size="sm" className="mr-2">
+                    <LogIn className="h-4 w-4 mr-2" />
+                    Entrar
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button size="sm" className="bg-advisor-purple hover:bg-advisor-vivid-purple">
+                    <User className="h-4 w-4 mr-2" />
+                    Cadastre-se
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="flex items-center gap-2">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src={user.user_metadata.avatar_url} />
+                      <AvatarFallback>{getInitials(user.user_metadata.name || user.email || "")}</AvatarFallback>
+                    </Avatar>
+                    <span className="hidden md:inline-block">
+                      {user.user_metadata.name || user.email?.split('@')[0] || "Usuário"}
+                    </span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem asChild>
+                    <Link to="/dashboard" className="cursor-pointer">Dashboard</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile" className="cursor-pointer">Perfil</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/settings" className="cursor-pointer">
+                      <Settings className="h-4 w-4 mr-2" />
+                      Configurações
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-red-500 focus:text-red-500">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Sair
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </nav>
         ) : (
           <DropdownMenu>
@@ -57,21 +111,41 @@ const Navbar = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-40">
-              <DropdownMenuItem asChild>
-                <Link to="/features">Recursos</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/pricing">Preços</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/about">Sobre</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/login">Entrar</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/signup">Cadastre-se</Link>
-              </DropdownMenuItem>
+              {!user ? (
+                <>
+                  <DropdownMenuItem asChild>
+                    <Link to="/features">Recursos</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/pricing">Preços</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/about">Sobre</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/login">Entrar</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/signup">Cadastre-se</Link>
+                  </DropdownMenuItem>
+                </>
+              ) : (
+                <>
+                  <DropdownMenuItem asChild>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile">Perfil</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/settings">Configurações</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleSignOut} className="text-red-500 focus:text-red-500">
+                    Sair
+                  </DropdownMenuItem>
+                </>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
         )}
