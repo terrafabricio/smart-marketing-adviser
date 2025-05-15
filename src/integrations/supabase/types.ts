@@ -54,6 +54,21 @@ export type Database = {
           },
         ]
       }
+      api_keys: {
+        Row: {
+          api_key: string
+          api_name: string
+        }
+        Insert: {
+          api_key: string
+          api_name: string
+        }
+        Update: {
+          api_key?: string
+          api_name?: string
+        }
+        Relationships: []
+      }
       campaign_metrics: {
         Row: {
           campaign_id: string | null
