@@ -32,13 +32,46 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setSession(session);
       setUser(session?.user ?? null);
       setIsLoading(false);
+    }).catch(error => {
+      console.error("Error retrieving auth session:", error);
+      setIsLoading(false);
+      // If there's an authenticated user when an error occurs, redirect to dashboard
+      if (user) {
+        window.location.href = "/dashboard";
+      }
     });
 
-    return () => subscription.unsubscribe();
-  }, []);
+    // Global error handler to redirect to dashboard when an auth error occurs for logged-in users
+    const handleError = (event: ErrorEvent) => {
+      if (user && !isLoading) {
+        console.error("Application error:", event.error);
+        // Only redirect on auth-related errors or critical application errors
+        if (event.error?.toString().includes("auth") || 
+            event.error?.toString().includes("session") ||
+            event.error?.toString().includes("permission")) {
+          window.location.href = "/dashboard";
+        }
+      }
+    };
+
+    window.addEventListener('error', handleError);
+
+    return () => {
+      subscription.unsubscribe();
+      window.removeEventListener('error', handleError);
+    };
+  }, [user, isLoading]);
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    try {
+      await supabase.auth.signOut();
+    } catch (error) {
+      console.error("Error signing out:", error);
+      // Redirect to dashboard if the user is still authenticated
+      if (user) {
+        window.location.href = "/dashboard";
+      }
+    }
   };
 
   return (

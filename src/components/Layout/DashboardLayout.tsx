@@ -17,7 +17,7 @@ import {
   SidebarGroupContent,
   SidebarHeader
 } from "@/components/ui/sidebar";
-import { BarChart3, Home, LayoutDashboard, PieChart, Settings, Users } from "lucide-react";
+import { BarChart3, Home, LayoutDashboard, Lightbulb, PieChart, Settings, Users } from "lucide-react";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -55,6 +55,14 @@ const DashboardSidebar = () => {
                   <a href="/dashboard/analytics">
                     <PieChart />
                     <span>Analytics</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Recomendações IA">
+                  <a href="/dashboard/recommendations">
+                    <Lightbulb />
+                    <span>Recomendações IA</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
