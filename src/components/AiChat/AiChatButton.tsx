@@ -3,15 +3,19 @@ import React, { useState } from "react";
 import { Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AiChatModal from "./AiChatModal";
+import { useAuth } from "@/contexts/AuthContext";
 
 const AiChatButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuth();
+
+  if (!user) return null;
 
   return (
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed right-6 bottom-6 rounded-full w-16 h-16 p-0 animate-glow bg-advisor-purple hover:bg-advisor-vivid-purple shadow-lg hover:shadow-xl transition-all duration-300 z-50"
+        className="fixed right-6 bottom-6 rounded-full w-16 h-16 p-0 bg-advisor-purple hover:bg-advisor-vivid-purple shadow-lg hover:shadow-xl transition-all duration-300 z-50"
         aria-label="Chat com IA"
       >
         <Bot className="h-8 w-8 text-white" />
