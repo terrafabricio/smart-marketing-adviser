@@ -31,12 +31,13 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            {/* Public routes with dark theme */}
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             
-            {/* Dashboard routes */}
+            {/* Dashboard routes with light theme */}
             <Route path="/dashboard" element={<DashboardIndex />} />
             <Route path="/dashboard/campaigns" element={<CampaignsPage />} />
             <Route path="/dashboard/analytics" element={<AnalyticsPage />} />
