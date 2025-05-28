@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -14,7 +15,8 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
   SidebarGroupContent,
-  SidebarHeader
+  SidebarHeader,
+  SidebarFooter
 } from "@/components/ui/sidebar";
 import { BarChart3, Home, LayoutDashboard, Lightbulb, PieChart, Settings, Users, Bot } from "lucide-react";
 
@@ -65,14 +67,6 @@ const DashboardSidebar = () => {
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="Recomendações IA">
-                  <a href="/dashboard/recommendations">
-                    <Lightbulb />
-                    <span>Recomendações IA</span>
-                  </a>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -101,6 +95,9 @@ const DashboardSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter className="p-4">
+        <AiChatButton />
+      </SidebarFooter>
     </Sidebar>
   );
 };
@@ -130,7 +127,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <div className="flex flex-col flex-1">
           <Navbar />
           <main className="flex-1 p-4 md:p-8">{children}</main>
-          <AiChatButton />
           <Footer />
         </div>
       </div>
