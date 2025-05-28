@@ -20,7 +20,8 @@ const AnimatedAiButton: React.FC<AnimatedAiButtonProps> = ({ onClick }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  const userName = user?.user_metadata?.name || "USUÁRIO";
+  const fullName = user?.user_metadata?.name || "USUÁRIO";
+  const firstName = fullName.split(' ')[0];
 
   return (
     <Button
@@ -54,7 +55,7 @@ const AnimatedAiButton: React.FC<AnimatedAiButtonProps> = ({ onClick }) => {
                 {!isHovered ? (
                   <div className="transition-opacity duration-300 opacity-100">
                     <div>OLÁ,</div>
-                    <div>{userName}!</div>
+                    <div>{firstName}!</div>
                     <span className="inline-block animate-wave text-[8px]">👋</span>
                   </div>
                 ) : (
