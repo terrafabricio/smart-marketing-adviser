@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -17,7 +16,7 @@ import {
   SidebarGroupContent,
   SidebarHeader
 } from "@/components/ui/sidebar";
-import { BarChart3, Home, LayoutDashboard, Lightbulb, PieChart, Settings, Users } from "lucide-react";
+import { BarChart3, Home, LayoutDashboard, Lightbulb, PieChart, Settings, Users, Bot } from "lucide-react";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -55,6 +54,14 @@ const DashboardSidebar = () => {
                   <a href="/dashboard/analytics">
                     <PieChart />
                     <span>Analytics</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Análise com IA">
+                  <a href="/dashboard/ai-analysis">
+                    <Bot />
+                    <span>Análise com IA</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>

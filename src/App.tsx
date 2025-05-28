@@ -20,6 +20,7 @@ import IntegrationsPage from "./pages/dashboard/IntegrationsPage";
 import ProfilePage from "./pages/dashboard/ProfilePage";
 import SettingsPage from "./pages/dashboard/SettingsPage";
 import RecommendationsPage from "./pages/dashboard/RecommendationsPage";
+import AiAnalysisPage from "./pages/dashboard/AiAnalysisPage";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/dashboard" element={<DashboardIndex />} />
             <Route path="/dashboard/campaigns" element={<CampaignsPage />} />
             <Route path="/dashboard/analytics" element={<AnalyticsPage />} />
+            <Route path="/dashboard/ai-analysis" element={<AiAnalysisPage />} />
             <Route path="/dashboard/integrations" element={<IntegrationsPage />} />
             <Route path="/dashboard/profile" element={<ProfilePage />} />
             <Route path="/dashboard/settings" element={<SettingsPage />} />
