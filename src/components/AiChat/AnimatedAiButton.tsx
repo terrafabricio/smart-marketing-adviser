@@ -27,7 +27,7 @@ const AnimatedAiButton: React.FC<AnimatedAiButtonProps> = ({ onClick }) => {
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative w-20 h-20 p-0 bg-transparent border-none shadow-none hover:bg-transparent group"
+      className="relative w-28 h-28 p-0 bg-transparent border-none shadow-none hover:bg-transparent group"
       aria-label="Chat com IA"
     >
       <div className="relative w-full h-full">
@@ -48,18 +48,19 @@ const AnimatedAiButton: React.FC<AnimatedAiButtonProps> = ({ onClick }) => {
         
         {/* Conteúdo interno */}
         <div className="absolute inset-2 rounded-full bg-[#0f0a29] flex items-center justify-center shadow-inner">
-          <div className="text-center text-white text-xs font-bold leading-tight">
+          <div className="text-center text-white text-[10px] font-bold leading-tight px-1">
             {showGreeting && (
               <>
                 {!isHovered ? (
                   <div className="transition-opacity duration-300 opacity-100">
                     <div>OLÁ,</div>
                     <div>{userName}!</div>
-                    <span className="inline-block animate-wave">👋</span>
+                    <span className="inline-block animate-wave text-[8px]">👋</span>
                   </div>
                 ) : (
                   <div className="transition-opacity duration-300 opacity-100">
-                    <div>COMO POSSO</div>
+                    <div>COMO</div>
+                    <div>POSSO</div>
                     <div>AJUDAR</div>
                     <div>VOCÊ?</div>
                   </div>
