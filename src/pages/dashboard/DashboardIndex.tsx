@@ -12,7 +12,9 @@ const DashboardIndex = () => {
   
   return (
     <DashboardLayout>
-      <DashboardHeader />
+      <div className="mb-10">
+        <DashboardHeader />
+      </div>
       <AICampaignStatus status={campaignStatus as "good" | "needs-adjustment" | "bad"} />
       <KpiCards />
       <Charts />

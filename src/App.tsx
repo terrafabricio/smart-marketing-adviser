@@ -22,6 +22,14 @@ import SettingsPage from "./pages/dashboard/SettingsPage";
 import RecommendationsPage from "./pages/dashboard/RecommendationsPage";
 import AiAnalysisPage from "./pages/dashboard/AiAnalysisPage";
 
+// Static pages
+import AboutPage from "./pages/static/AboutPage";
+import ContactPage from "./pages/static/ContactPage";
+import CareersPage from "./pages/static/CareersPage";
+import TermsPage from "./pages/static/TermsPage";
+import PrivacyPage from "./pages/static/PrivacyPage";
+import CookiesPage from "./pages/static/CookiesPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -49,14 +57,22 @@ const App = () => (
             <Route path="/dashboard/recommendations" element={<RecommendationsPage />} />
             
             {/* Static pages */}
+            <Route path="/sobre-nos" element={<AboutPage />} />
+            <Route path="/contato" element={<ContactPage />} />
+            <Route path="/carreiras" element={<CareersPage />} />
+            <Route path="/termos-de-uso" element={<TermsPage />} />
+            <Route path="/politica-de-privacidade" element={<PrivacyPage />} />
+            <Route path="/politica-de-cookies" element={<CookiesPage />} />
+            
+            {/* Legacy routes */}
             <Route path="/features" element={<ComingSoonPage />} />
             <Route path="/pricing" element={<ComingSoonPage />} />
-            <Route path="/about" element={<ComingSoonPage />} />
-            <Route path="/contact" element={<ComingSoonPage />} />
-            <Route path="/careers" element={<ComingSoonPage />} />
-            <Route path="/terms" element={<ComingSoonPage />} />
-            <Route path="/privacy" element={<ComingSoonPage />} />
-            <Route path="/cookies" element={<ComingSoonPage />} />
+            <Route path="/about" element={<Navigate to="/sobre-nos" replace />} />
+            <Route path="/contact" element={<Navigate to="/contato" replace />} />
+            <Route path="/careers" element={<Navigate to="/carreiras" replace />} />
+            <Route path="/terms" element={<Navigate to="/termos-de-uso" replace />} />
+            <Route path="/privacy" element={<Navigate to="/politica-de-privacidade" replace />} />
+            <Route path="/cookies" element={<Navigate to="/politica-de-cookies" replace />} />
             <Route path="/support" element={<ComingSoonPage />} />
             <Route path="/integrations/:platform" element={<ComingSoonPage />} />
             <Route path="*" element={<Navigate to="/dashboard" replace />} />
