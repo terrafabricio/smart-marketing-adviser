@@ -12,12 +12,11 @@ const DashboardIndex = () => {
   
   return (
     <DashboardLayout>
-      <div className="mb-10">
-        <DashboardHeader />
+      <div className="space-y-6 pb-8">
+        <AICampaignStatus status={campaignStatus as "good" | "needs-adjustment" | "bad"} />
+        <KpiCards />
+        <Charts />
       </div>
-      <AICampaignStatus status={campaignStatus as "good" | "needs-adjustment" | "bad"} />
-      <KpiCards />
-      <Charts />
     </DashboardLayout>
   );
 };

@@ -2,7 +2,7 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Check, Settings, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import clsx from "clsx";
 
 type CampaignStatus = "good" | "needs-adjustment" | "bad";
 
@@ -13,9 +13,9 @@ interface AICampaignStatusProps {
 const statusConfig = {
   "good": {
     icon: Check,
-    color: "text-green-500",
-    bgColor: "bg-green-50",
-    borderColor: "border-green-500",
+    color: "text-[#8AFF72]",
+    bgColor: "bg-[#8AFF72]/10",
+    borderColor: "border-[#8AFF72]",
     message: "Suas campanhas estão com bom desempenho",
     description: "Continue com a estratégia atual"
   },
@@ -43,21 +43,21 @@ const AICampaignStatus: React.FC<AICampaignStatusProps> = ({ status }) => {
   
   return (
     <Card 
-      className={cn(
-        "mb-6 border-l-4",
+      className={clsx(
+        "eduplex-card border-l-4",
         config.bgColor,
         config.borderColor
       )}
       role="status"
       aria-label={`Status da campanha: ${config.message}`}
     >
-      <div className="p-4 flex items-center">
-        <div className={cn("rounded-full p-2 mr-4", config.bgColor)}>
-          <IconComponent className={cn("h-6 w-6", config.color)} aria-hidden="true" />
+      <div className="flex items-center">
+        <div className={clsx("rounded-full p-3 mr-4", config.bgColor)}>
+          <IconComponent className={clsx("h-6 w-6", config.color)} aria-hidden="true" />
         </div>
         <div>
-          <h3 className="font-medium text-lg">{config.message}</h3>
-          <p className="text-sm text-muted-foreground">{config.description}</p>
+          <h3 className="font-semibold text-lg text-gray-900">{config.message}</h3>
+          <p className="text-sm text-gray-500">{config.description}</p>
         </div>
       </div>
     </Card>

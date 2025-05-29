@@ -44,17 +44,17 @@ const channelData = [
   { name: "Gmail", valor: 13 },
 ];
 
-const COLORS = ["#9b87f5", "#1EAEDB", "#F97316", "#7E69AB", "#6E59A5"];
+const COLORS = ["#8AFF72", "#DCCAFF", "#A855F7", "#06B6D4", "#F59E0B"];
 
 const Charts = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-      <Card className="border border-border bg-card hover:shadow-lg transition-all card-hover">
+      <Card className="eduplex-card" aria-label="Gráfico de desempenho ao longo do tempo">
         <CardHeader>
-          <CardTitle>Desempenho ao longo do tempo</CardTitle>
+          <CardTitle className="text-lg font-medium text-gray-900">Desempenho ao longo do tempo</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-80">
+          <div className="h-[60vh] lg:h-80">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 data={performanceData}
@@ -65,37 +65,40 @@ const Charts = () => {
                   bottom: 5,
                 }}
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                <XAxis dataKey="name" stroke="#666" />
-                <YAxis stroke="#666" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+                <XAxis dataKey="name" stroke="#6B7280" />
+                <YAxis stroke="#6B7280" />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#1A1F2C",
-                    borderColor: "#333",
-                    color: "#fff",
+                    backgroundColor: "white",
+                    borderColor: "#E5E7EB",
+                    borderRadius: "12px",
+                    color: "#1F2937",
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
                   }}
                 />
                 <Legend />
                 <Line
                   type="monotone"
                   dataKey="impressions"
-                  stroke="#9b87f5"
-                  activeDot={{ r: 8 }}
+                  stroke="#8AFF72"
+                  strokeWidth={3}
+                  activeDot={{ r: 6, fill: "#8AFF72" }}
                 />
-                <Line type="monotone" dataKey="cliques" stroke="#1EAEDB" />
-                <Line type="monotone" dataKey="conversoes" stroke="#F97316" />
+                <Line type="monotone" dataKey="cliques" stroke="#DCCAFF" strokeWidth={3} />
+                <Line type="monotone" dataKey="conversoes" stroke="#A855F7" strokeWidth={3} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="border border-border bg-card hover:shadow-lg transition-all card-hover">
+      <Card className="eduplex-card" aria-label="Gráfico de conversões por tipo de campanha">
         <CardHeader>
-          <CardTitle>Conversões por tipo de campanha</CardTitle>
+          <CardTitle className="text-lg font-medium text-gray-900">Conversões por tipo de campanha</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-80">
+          <div className="h-[60vh] lg:h-80">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={conversionData}
@@ -106,29 +109,31 @@ const Charts = () => {
                   bottom: 5,
                 }}
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                <XAxis dataKey="name" stroke="#666" />
-                <YAxis stroke="#666" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+                <XAxis dataKey="name" stroke="#6B7280" />
+                <YAxis stroke="#6B7280" />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#1A1F2C",
-                    borderColor: "#333",
-                    color: "#fff",
+                    backgroundColor: "white",
+                    borderColor: "#E5E7EB",
+                    borderRadius: "12px",
+                    color: "#1F2937",
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
                   }}
                 />
-                <Bar dataKey="valor" fill="#9b87f5" />
+                <Bar dataKey="valor" fill="#8AFF72" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="border border-border bg-card hover:shadow-lg transition-all card-hover">
+      <Card className="eduplex-card" aria-label="Gráfico de distribuição por canal">
         <CardHeader>
-          <CardTitle>Distribuição por canal</CardTitle>
+          <CardTitle className="text-lg font-medium text-gray-900">Distribuição por canal</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-80">
+          <div className="h-[60vh] lg:h-80">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
@@ -152,9 +157,11 @@ const Charts = () => {
                 </Pie>
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#1A1F2C",
-                    borderColor: "#333",
-                    color: "#fff",
+                    backgroundColor: "white",
+                    borderColor: "#E5E7EB",
+                    borderRadius: "12px",
+                    color: "#1F2937",
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
                   }}
                 />
               </PieChart>
@@ -163,12 +170,12 @@ const Charts = () => {
         </CardContent>
       </Card>
 
-      <Card className="border border-border bg-card hover:shadow-lg transition-all card-hover">
+      <Card className="eduplex-card" aria-label="Gráfico de tendência de conversões">
         <CardHeader>
-          <CardTitle>Tendência de conversões</CardTitle>
+          <CardTitle className="text-lg font-medium text-gray-900">Tendência de conversões</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-80">
+          <div className="h-[60vh] lg:h-80">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart
                 data={performanceData}
@@ -179,22 +186,25 @@ const Charts = () => {
                   bottom: 5,
                 }}
               >
-                <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                <XAxis dataKey="name" stroke="#666" />
-                <YAxis stroke="#666" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+                <XAxis dataKey="name" stroke="#6B7280" />
+                <YAxis stroke="#6B7280" />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: "#1A1F2C",
-                    borderColor: "#333",
-                    color: "#fff",
+                    backgroundColor: "white",
+                    borderColor: "#E5E7EB",
+                    borderRadius: "12px",
+                    color: "#1F2937",
+                    boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
                   }}
                 />
                 <Area
                   type="monotone"
                   dataKey="conversoes"
-                  stroke="#9b87f5"
-                  fill="#9b87f5"
-                  fillOpacity={0.3}
+                  stroke="#8AFF72"
+                  fill="#DCCAFF"
+                  fillOpacity={0.6}
+                  strokeWidth={3}
                 />
               </AreaChart>
             </ResponsiveContainer>
