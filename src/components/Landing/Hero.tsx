@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, UserPlus, LogIn } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -21,13 +21,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-200">
             <Link to="/signup">
               <Button className="w-full sm:w-auto bg-advisor-purple hover:bg-advisor-vivid-purple text-lg py-6 px-8">
-                Começar Agora
-                <ChevronRight className="ml-2 h-5 w-5" />
+                <UserPlus className="mr-2 h-5 w-5" />
+                Registre-se
               </Button>
             </Link>
-            <Link to="/features">
+            <Link to="/login">
               <Button variant="outline" className="w-full sm:w-auto text-lg py-6 px-8">
-                Conheça os Recursos
+                <LogIn className="mr-2 h-5 w-5" />
+                Fazer Login
               </Button>
             </Link>
           </div>

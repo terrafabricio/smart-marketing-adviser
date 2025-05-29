@@ -1,6 +1,6 @@
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AiChatButton from "../AiChat/AiChatButton";
@@ -25,6 +25,12 @@ interface DashboardLayoutProps {
 }
 
 const DashboardSidebar = () => {
+  const location = useLocation();
+  
+  const isActive = (path: string) => {
+    return location.pathname === path;
+  };
+
   return (
     <Sidebar className="bg-[#1F1F3F] border-r-0">
       <div className="bg-[#1F1F3F] rounded-r-2xl min-h-full">
@@ -37,7 +43,7 @@ const DashboardSidebar = () => {
             <SidebarGroupContent>
               <SidebarMenu className="space-y-2">
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="eduplex-sidebar-item eduplex-sidebar-item-active">
+                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard') ? 'eduplex-sidebar-item-active' : ''}`}>
                     <a href="/dashboard" className="flex items-center gap-3 px-4 py-3">
                       <LayoutDashboard className="h-5 w-5" />
                       <span className="font-medium">Dashboard</span>
@@ -45,7 +51,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="eduplex-sidebar-item">
+                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/campaigns') ? 'eduplex-sidebar-item-active' : ''}`}>
                     <a href="/dashboard/campaigns" className="flex items-center gap-3 px-4 py-3">
                       <BarChart3 className="h-5 w-5" />
                       <span className="font-medium">Campanhas</span>
@@ -53,7 +59,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="eduplex-sidebar-item">
+                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/analytics') ? 'eduplex-sidebar-item-active' : ''}`}>
                     <a href="/dashboard/analytics" className="flex items-center gap-3 px-4 py-3">
                       <PieChart className="h-5 w-5" />
                       <span className="font-medium">Analytics</span>
@@ -61,7 +67,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="eduplex-sidebar-item">
+                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/recommendations') ? 'eduplex-sidebar-item-active' : ''}`}>
                     <a href="/dashboard/recommendations" className="flex items-center gap-3 px-4 py-3">
                       <Lightbulb className="h-5 w-5" />
                       <span className="font-medium">Recomendações IA</span>
@@ -69,7 +75,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="eduplex-sidebar-item">
+                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/ai-analysis') ? 'eduplex-sidebar-item-active' : ''}`}>
                     <a href="/dashboard/ai-analysis" className="flex items-center gap-3 px-4 py-3">
                       <Bot className="h-5 w-5" />
                       <span className="font-medium">Análise com IA</span>
@@ -85,7 +91,7 @@ const DashboardSidebar = () => {
             <SidebarGroupContent>
               <SidebarMenu className="space-y-2">
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="eduplex-sidebar-item">
+                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/profile') ? 'eduplex-sidebar-item-active' : ''}`}>
                     <a href="/dashboard/profile" className="flex items-center gap-3 px-4 py-3">
                       <Users className="h-5 w-5" />
                       <span className="font-medium">Perfil</span>
@@ -93,7 +99,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className="eduplex-sidebar-item">
+                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/settings') ? 'eduplex-sidebar-item-active' : ''}`}>
                     <a href="/dashboard/settings" className="flex items-center gap-3 px-4 py-3">
                       <Settings className="h-5 w-5" />
                       <span className="font-medium">Configurações</span>

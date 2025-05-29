@@ -51,6 +51,7 @@ const App = () => (
             <Route path="/dashboard/campaigns" element={<CampaignsPage />} />
             <Route path="/dashboard/analytics" element={<AnalyticsPage />} />
             <Route path="/dashboard/ai-analysis" element={<AiAnalysisPage />} />
+            <Route path="/dashboard/analysis/:campaignId" element={<AiAnalysisPage />} />
             <Route path="/dashboard/integrations" element={<IntegrationsPage />} />
             <Route path="/dashboard/profile" element={<ProfilePage />} />
             <Route path="/dashboard/settings" element={<SettingsPage />} />
