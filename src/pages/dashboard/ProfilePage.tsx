@@ -7,9 +7,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthContext";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { LogOut } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 
 const ProfilePage = () => {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   
   const getInitials = (name: string) => {
     if (!name) return "U";
@@ -18,12 +23,41 @@ const ProfilePage = () => {
     return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
   };
 
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      toast({
+        title: "Logout realizado com sucesso",
+        description: "Você foi desconectado da sua conta.",
+      });
+      navigate("/");
+    } catch (error) {
+      toast({
+        title: "Erro ao sair",
+        description: "Ocorreu um erro ao tentar sair da conta.",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <DashboardLayout>
-      <h1 className="text-3xl font-bold mb-6">Perfil</h1>
-      <p className="text-muted-foreground mb-6">
-        Gerencie suas informações pessoais e preferências
-      </p>
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h1 className="text-3xl font-bold">Perfil</h1>
+          <p className="text-muted-foreground">
+            Gerencie suas informações pessoais e preferências
+          </p>
+        </div>
+        <Button
+          variant="outline"
+          onClick={handleSignOut}
+          className="flex items-center gap-2 text-red-600 hover:text-red-700 hover:bg-red-50"
+        >
+          <LogOut className="h-4 w-4" />
+          Sair da conta
+        </Button>
+      </div>
 
       <div className="grid gap-6">
         <Card>
