@@ -75,7 +75,7 @@ const App = () => (
             <Route path="/cookies" element={<Navigate to="/politica-de-cookies" replace />} />
             <Route path="/support" element={<ComingSoonPage />} />
             <Route path="/integrations/:platform" element={<ComingSoonPage />} />
-            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
