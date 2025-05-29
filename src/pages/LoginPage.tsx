@@ -4,15 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { signIn } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -21,12 +20,24 @@ const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      await signIn(email, password);
-      toast({
-        title: "Login realizado com sucesso!",
-        description: "Bem-vindo de volta ao AdVisor-AI",
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
       });
-      navigate("/dashboard");
+
+      if (error) {
+        toast({
+          title: "Erro no login",
+          description: "Verifique suas credenciais e tente novamente.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Login realizado com sucesso!",
+          description: "Bem-vindo de volta ao AdVisor-AI",
+        });
+        navigate("/dashboard");
+      }
     } catch (error) {
       toast({
         title: "Erro no login",
