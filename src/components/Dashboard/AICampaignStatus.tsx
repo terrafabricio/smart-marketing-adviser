@@ -13,15 +13,15 @@ interface AICampaignStatusProps {
 const statusConfig = {
   "good": {
     icon: Check,
-    color: "text-[#8AFF72]",
-    bgColor: "bg-[#8AFF72]/10",
-    borderColor: "border-[#8AFF72]",
+    color: "text-green-600",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-500",
     message: "Suas campanhas estão com bom desempenho",
     description: "Continue com a estratégia atual"
   },
   "needs-adjustment": {
     icon: Settings,
-    color: "text-amber-500",
+    color: "text-amber-600",
     bgColor: "bg-amber-50",
     borderColor: "border-amber-500",
     message: "Suas campanhas precisam de ajustes",
@@ -29,7 +29,7 @@ const statusConfig = {
   },
   "bad": {
     icon: X,
-    color: "text-red-500",
+    color: "text-red-600",
     bgColor: "bg-red-50",
     borderColor: "border-red-500",
     message: "Campanhas com desempenho abaixo do esperado",
@@ -44,9 +44,9 @@ const AICampaignStatus: React.FC<AICampaignStatusProps> = ({ status }) => {
   return (
     <Card 
       className={clsx(
-        "eduplex-card border-l-4",
-        config.bgColor,
-        config.borderColor
+        "mb-6 border-l-4 bg-white rounded-2xl shadow-xl p-6",
+        config.borderColor,
+        config.bgColor
       )}
       role="status"
       aria-label={`Status da campanha: ${config.message}`}

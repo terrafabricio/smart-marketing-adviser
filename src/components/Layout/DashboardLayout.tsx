@@ -1,7 +1,6 @@
 
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import AiChatButton from "../AiChat/AiChatButton";
 import { useAuth } from "@/contexts/AuthContext";
@@ -18,7 +17,7 @@ import {
   SidebarHeader,
   SidebarFooter
 } from "@/components/ui/sidebar";
-import { BarChart3, Home, LayoutDashboard, Lightbulb, PieChart, Settings, Users, Bot, Search } from "lucide-react";
+import { BarChart3, LayoutDashboard, Lightbulb, PieChart, Settings, Users, Bot, Search } from "lucide-react";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -28,12 +27,12 @@ const DashboardSidebar = () => {
   const location = useLocation();
   
   const isActive = (path: string) => {
-    return location.pathname === path;
+    return location.pathname === path || location.pathname.startsWith(path);
   };
 
   return (
-    <Sidebar className="bg-[#1F1F3F] border-r-0">
-      <div className="bg-[#1F1F3F] rounded-r-2xl min-h-full">
+    <Sidebar className="bg-advisor-dark-purple border-r-0">
+      <div className="bg-advisor-dark-purple rounded-r-2xl min-h-full">
         <SidebarHeader className="flex items-center justify-center py-6">
           <span className="text-[#8AFF72] text-xl font-bold">AdVisor-AI</span>
         </SidebarHeader>
@@ -43,7 +42,7 @@ const DashboardSidebar = () => {
             <SidebarGroupContent>
               <SidebarMenu className="space-y-2">
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard') ? 'eduplex-sidebar-item-active' : ''}`}>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard') && !isActive('/dashboard/') ? 'bg-advisor-purple/20 text-white' : ''}`}>
                     <a href="/dashboard" className="flex items-center gap-3 px-4 py-3">
                       <LayoutDashboard className="h-5 w-5" />
                       <span className="font-medium">Dashboard</span>
@@ -51,7 +50,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/campaigns') ? 'eduplex-sidebar-item-active' : ''}`}>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/campaigns') ? 'bg-advisor-purple/20 text-white' : ''}`}>
                     <a href="/dashboard/campaigns" className="flex items-center gap-3 px-4 py-3">
                       <BarChart3 className="h-5 w-5" />
                       <span className="font-medium">Campanhas</span>
@@ -59,7 +58,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/analytics') ? 'eduplex-sidebar-item-active' : ''}`}>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/analytics') ? 'bg-advisor-purple/20 text-white' : ''}`}>
                     <a href="/dashboard/analytics" className="flex items-center gap-3 px-4 py-3">
                       <PieChart className="h-5 w-5" />
                       <span className="font-medium">Analytics</span>
@@ -67,7 +66,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/recommendations') ? 'eduplex-sidebar-item-active' : ''}`}>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/recommendations') ? 'bg-advisor-purple/20 text-white' : ''}`}>
                     <a href="/dashboard/recommendations" className="flex items-center gap-3 px-4 py-3">
                       <Lightbulb className="h-5 w-5" />
                       <span className="font-medium">Recomendações IA</span>
@@ -75,7 +74,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/ai-analysis') ? 'eduplex-sidebar-item-active' : ''}`}>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/ai-analysis') ? 'bg-advisor-purple/20 text-white' : ''}`}>
                     <a href="/dashboard/ai-analysis" className="flex items-center gap-3 px-4 py-3">
                       <Bot className="h-5 w-5" />
                       <span className="font-medium">Análise com IA</span>
@@ -91,7 +90,7 @@ const DashboardSidebar = () => {
             <SidebarGroupContent>
               <SidebarMenu className="space-y-2">
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/profile') ? 'eduplex-sidebar-item-active' : ''}`}>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/profile') ? 'bg-advisor-purple/20 text-white' : ''}`}>
                     <a href="/dashboard/profile" className="flex items-center gap-3 px-4 py-3">
                       <Users className="h-5 w-5" />
                       <span className="font-medium">Perfil</span>
@@ -99,7 +98,7 @@ const DashboardSidebar = () => {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`eduplex-sidebar-item ${isActive('/dashboard/settings') ? 'eduplex-sidebar-item-active' : ''}`}>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/settings') ? 'bg-advisor-purple/20 text-white' : ''}`}>
                     <a href="/dashboard/settings" className="flex items-center gap-3 px-4 py-3">
                       <Settings className="h-5 w-5" />
                       <span className="font-medium">Configurações</span>
@@ -129,7 +128,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   }, [user, isLoading, navigate]);
 
   if (isLoading) {
-    return <div className="flex h-screen items-center justify-center bg-[#F3F0FF]">Carregando...</div>;
+    return <div className="flex h-screen items-center justify-center bg-advisor-soft-purple">Carregando...</div>;
   }
 
   if (!user) {
@@ -139,18 +138,18 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <div className="eduplex-theme">
       <SidebarProvider>
-        <div className="flex min-h-screen w-full bg-[#F3F0FF]">
+        <div className="flex min-h-screen w-full bg-advisor-soft-purple">
           <DashboardSidebar />
           <div className="flex flex-col flex-1">
             <header className="bg-transparent px-6 py-4">
               <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <div>
-                  <h1 className="text-2xl font-semibold text-gray-900">
+                  <h1 className="text-2xl font-semibold text-foreground">
                     Bem-vindo de volta, {user?.user_metadata?.name?.split(' ')[0] || 'Usuário'} 👋
                   </h1>
                   <p className="text-sm text-gray-500 mt-1">Vamos analisar o desempenho das suas campanhas hoje</p>
                 </div>
-                <div className="eduplex-search-bar">
+                <div className="bg-white rounded-full shadow-sm px-4 py-2 w-full max-w-sm border border-gray-200 focus-within:ring-2 focus-within:ring-[#8AFF72]/20">
                   <div className="flex items-center gap-2">
                     <Search className="h-4 w-4 text-gray-400" />
                     <input

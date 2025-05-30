@@ -12,10 +12,7 @@ import {
   Star,
   ChevronDown,
   ChevronRight,
-  ArrowRight,
-  Mail,
-  Phone,
-  MapPin
+  ArrowRight
 } from "lucide-react";
 
 const LandingPage = () => {
@@ -104,52 +101,58 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-[#1A1A2E] text-white overflow-x-hidden">
       {/* Navbar */}
-      <nav className="navbar-dark fixed w-full top-0 z-50">
+      <nav className="bg-[#1A1A2E] fixed w-full top-0 z-50 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="text-2xl font-bold gradient-text">
+            <Link to="/" className="text-2xl font-bold text-white">
               AdVisor-AI
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="navbar-link">Home</Link>
-              <Link to="#features" className="navbar-link">Funcionalidades</Link>
-              <Link to="#pricing" className="navbar-link">Preços</Link>
-              <Link to="#blog" className="navbar-link">Blog</Link>
-              <Link to="#contact" className="navbar-link">Contato</Link>
+              <Link to="/" className="text-gray-300 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-300 hover:bg-clip-text hover:text-transparent transition-all duration-300">Home</Link>
+              <Link to="#features" className="text-gray-300 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-300 hover:bg-clip-text hover:text-transparent transition-all duration-300">Funcionalidades</Link>
+              <Link to="#pricing" className="text-gray-300 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-300 hover:bg-clip-text hover:text-transparent transition-all duration-300">Preços</Link>
+              <Link to="#contact" className="text-gray-300 hover:bg-gradient-to-r hover:from-purple-500 hover:to-purple-300 hover:bg-clip-text hover:text-transparent transition-all duration-300">Contato</Link>
             </div>
 
-            <Link to="/signup">
-              <Button className="glass-button">
-                Experimente Grátis
-              </Button>
-            </Link>
+            <div className="flex items-center space-x-4">
+              <Link to="/login">
+                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                  Fazer Login
+                </Button>
+              </Link>
+              <Link to="/signup">
+                <Button className="bg-white/10 backdrop-blur-2xl border border-white/30 text-white hover:bg-white/20 hover:border-white/50 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300">
+                  Registre-se
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen futuristic-bg flex items-center justify-center pt-20">
+      <section className="min-h-screen flex items-center justify-center pt-20" style={{background: 'radial-gradient(circle at 30% 20%, #8B5CF6 0%, #A78BFA 30%, #1A1A2E 100%)'}}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="glass-morphism max-w-6xl mx-auto p-8 md:p-12">
+          <div className="bg-white/10 backdrop-blur-[20px] border border-white/20 rounded-2xl shadow-2xl max-w-6xl mx-auto p-8 md:p-12">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="text-left">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
-                  Your AI-Powered <span className="gradient-text">Google Ads</span> Analyst
+                <h1 className="text-4xl font-semibold text-white leading-tight mb-6">
+                  Your AI-Powered <span className="text-advisor-purple">Google Ads</span> Analyst
                 </h1>
-                <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                <p className="text-base text-[#E5DEFF] mb-8 leading-relaxed">
                   Transforme suas campanhas do Google Ads com inteligência artificial avançada. 
                   Otimização automática, insights preditivos e ROI maximizado.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link to="/signup">
-                    <Button className="neon-green-button w-full sm:w-auto">
+                    <Button className="bg-[#8AFF72] text-gray-900 font-medium rounded-full px-8 py-3 hover:scale-105 transition-transform duration-300 w-full sm:w-auto">
                       Começar Agora
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </Link>
                   <Link to="#demo">
-                    <Button className="glass-button w-full sm:w-auto">
+                    <Button variant="ghost" className="text-white border border-white/30 rounded-full px-8 py-3 hover:bg-white/10 w-full sm:w-auto">
                       Ver Demonstração
                     </Button>
                   </Link>
@@ -157,7 +160,7 @@ const LandingPage = () => {
               </div>
               
               <div className="relative">
-                <div className="glass-morphism p-8 animate-float">
+                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 animate-float">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-300">ROAS</span>
@@ -184,21 +187,21 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Funcionalidades <span className="gradient-text">Avançadas</span>
+              Funcionalidades <span className="text-advisor-purple">Avançadas</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-advisor-neutral-gray max-w-3xl mx-auto">
               Descubra como nossa IA revoluciona a gestão de campanhas do Google Ads
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
-              <div key={index} className="feature-card group">
-                <div className="mb-6 p-3 bg-purple-500/20 rounded-full w-fit group-hover:bg-purple-500/30 transition-all duration-300">
+              <div key={index} className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-lg p-6 transition-all duration-300 hover:bg-white/20 hover:border-white/20 hover:shadow-[0_0_30px_rgba(139,92,246,0.2)] group">
+                <div className="mb-6 p-3 bg-advisor-purple/20 rounded-full w-fit group-hover:bg-advisor-purple/30 transition-all duration-300">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-4 text-white">{feature.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{feature.description}</p>
+                <p className="text-advisor-neutral-gray leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -210,18 +213,18 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Resultados <span className="gradient-text">Comprovados</span>
+              Resultados <span className="text-advisor-purple">Comprovados</span>
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-advisor-neutral-gray">
               Veja o impacto real em campanhas de nossos clientes
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {results.map((result, index) => (
-              <div key={index} className="glass-morphism-dark text-center p-8">
+              <div key={index} className="bg-white/10 backdrop-blur-xl rounded-2xl text-center p-8">
                 <div className="text-4xl font-bold text-[#8AFF72] mb-4">{result.metric}</div>
-                <p className="text-gray-300">{result.description}</p>
+                <p className="text-advisor-neutral-gray">{result.description}</p>
               </div>
             ))}
           </div>
@@ -233,22 +236,22 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              O que nossos <span className="gradient-text">clientes</span> dizem
+              O que nossos <span className="text-advisor-purple">clientes</span> dizem
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-card">
+              <div key={index} className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 text-white">
                 <div className="flex mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-[#8AFF72] fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-300 mb-6 italic">"{testimonial.text}"</p>
+                <p className="text-advisor-neutral-gray mb-6 italic">"{testimonial.text}"</p>
                 <div>
                   <div className="font-semibold text-white">{testimonial.name}</div>
-                  <div className="text-sm text-gray-400">{testimonial.company}</div>
+                  <div className="text-sm text-advisor-neutral-gray">{testimonial.company}</div>
                 </div>
               </div>
             ))}
@@ -261,13 +264,13 @@ const LandingPage = () => {
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Perguntas <span className="gradient-text">Frequentes</span>
+              Perguntas <span className="text-advisor-purple">Frequentes</span>
             </h2>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="glass-morphism-dark">
+              <div key={index} className="bg-white/10 backdrop-blur-xl rounded-2xl">
                 <button
                   className="w-full px-6 py-4 text-left flex items-center justify-between text-white hover:text-purple-300 transition-colors"
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
@@ -278,7 +281,7 @@ const LandingPage = () => {
                   />
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-4 text-gray-300">
+                  <div className="px-6 pb-4 text-advisor-neutral-gray">
                     {faq.answer}
                   </div>
                 )}
@@ -298,7 +301,7 @@ const LandingPage = () => {
             Junte-se a centenas de empresas que já transformaram seus resultados com nossa IA
           </p>
           <Link to="/signup">
-            <Button className="glass-morphism text-white hover:bg-white/20 text-lg px-8 py-4">
+            <Button className="bg-white/20 backdrop-blur-xl text-gray-900 hover:bg-white/30 text-lg px-8 py-4 rounded-full">
               Começar Gratuitamente
               <ChevronRight className="ml-2 h-5 w-5" />
             </Button>
@@ -307,43 +310,20 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#1A1A2E] py-12 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">Empresa</h4>
-              <ul className="space-y-2">
-                <li><Link to="/sobre-nos" className="text-gray-400 hover:text-purple-300 transition-colors">Sobre nós</Link></li>
-                <li><Link to="/contato" className="text-gray-400 hover:text-purple-300 transition-colors">Contato</Link></li>
-                <li><Link to="/carreiras" className="text-gray-400 hover:text-purple-300 transition-colors">Carreiras</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">Produto</h4>
-              <ul className="space-y-2">
-                <li><Link to="#features" className="text-gray-400 hover:text-purple-300 transition-colors">Funcionalidades</Link></li>
-                <li><Link to="#pricing" className="text-gray-400 hover:text-purple-300 transition-colors">Preços</Link></li>
-                <li><Link to="/integrations" className="text-gray-400 hover:text-purple-300 transition-colors">Integrações</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4 text-white">Legal</h4>
-              <ul className="space-y-2">
-                <li><Link to="/termos-de-uso" className="text-gray-400 hover:text-purple-300 transition-colors">Termos de Uso</Link></li>
-                <li><Link to="/politica-de-privacidade" className="text-gray-400 hover:text-purple-300 transition-colors">Política de Privacidade</Link></li>
-                <li><Link to="/politica-de-cookies" className="text-gray-400 hover:text-purple-300 transition-colors">Política de Cookies</Link></li>
-              </ul>
-            </div>
+      <footer className="py-8 bg-advisor-light-gray text-advisor-medium-gray">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="flex flex-col space-y-2">
+            <Link to="/sobre-nos" className="hover:text-advisor-purple transition-colors">Sobre nós</Link>
+            <Link to="/contato" className="hover:text-advisor-purple transition-colors">Contato</Link>
+            <Link to="/carreiras" className="hover:text-advisor-purple transition-colors">Carreiras</Link>
           </div>
-          
-          <div className="pt-8 border-t border-white/10 text-center">
-            <p className="text-gray-400">
-              © 2025 AdVisor-AI. Todos os direitos reservados.
-            </p>
+          <div className="flex flex-col space-y-2">
+            <Link to="/termos-de-uso" className="hover:text-advisor-purple transition-colors">Termos de Uso</Link>
+            <Link to="/politica-de-privacidade" className="hover:text-advisor-purple transition-colors">Política de Privacidade</Link>
+            <Link to="/politica-de-cookies" className="hover:text-advisor-purple transition-colors">Política de Cookies</Link>
           </div>
         </div>
+        <p className="mt-6 text-center text-sm">© 2025 AdVisor-AI. Todos os direitos reservados.</p>
       </footer>
     </div>
   );

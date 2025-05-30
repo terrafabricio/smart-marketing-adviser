@@ -7,16 +7,15 @@ import DetailedCampaignList from "@/components/Dashboard/DetailedCampaignList";
 
 const CampaignsPage = () => {
   const handleFilterChange = (filters: any) => {
-    // Implementar lógica de filtros quando a API estiver conectada
     console.log("Filtros aplicados:", filters);
   };
 
   return (
     <DashboardLayout>
       <div className="space-y-6 pb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Campanhas</h1>
-          <p className="text-gray-600 mt-1">
+        <div className="mb-10">
+          <h1 className="text-2xl font-semibold text-foreground mb-2">Campanhas</h1>
+          <p className="text-gray-500">
             Visualize e gerencie todas as suas campanhas publicitárias
           </p>
         </div>
