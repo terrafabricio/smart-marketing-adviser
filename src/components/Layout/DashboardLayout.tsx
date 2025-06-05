@@ -21,7 +21,6 @@ import {
   BarChart3, 
   LayoutDashboard, 
   Lightbulb, 
-  PieChart, 
   Settings, 
   Users, 
   Bot, 
@@ -67,14 +66,6 @@ const DashboardSidebar = () => {
                     <a href="/dashboard/campaigns" className="flex items-center gap-3 px-4 py-3">
                       <BarChart3 className="h-5 w-5" />
                       <span className="font-medium">Campanhas</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/analytics') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard/analytics" className="flex items-center gap-3 px-4 py-3">
-                      <PieChart className="h-5 w-5" />
-                      <span className="font-medium">Analytics</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -215,10 +206,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               </div>
             </main>
             <Footer />
-            {/* Chat IA Button posicionado no canto inferior direito */}
-            <div className="fixed bottom-6 right-6 z-50">
-              <AiChatButton />
-            </div>
           </div>
         </div>
       </SidebarProvider>

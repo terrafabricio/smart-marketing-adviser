@@ -15,7 +15,6 @@ import { AuthProvider } from "./contexts/AuthContext";
 // Dashboard pages
 import DashboardIndex from "./pages/dashboard/DashboardIndex";
 import CampaignsPage from "./pages/dashboard/CampaignsPage";
-import AnalyticsPage from "./pages/dashboard/AnalyticsPage";
 import IntegrationsPage from "./pages/dashboard/IntegrationsPage";
 import ProfilePage from "./pages/dashboard/ProfilePage";
 import SettingsPage from "./pages/dashboard/SettingsPage";
@@ -52,7 +51,6 @@ const App = () => (
             {/* Dashboard routes with light theme */}
             <Route path="/dashboard" element={<DashboardIndex />} />
             <Route path="/dashboard/campaigns" element={<CampaignsPage />} />
-            <Route path="/dashboard/analytics" element={<AnalyticsPage />} />
             <Route path="/dashboard/ai-analysis" element={<AiAnalysisPage />} />
             <Route path="/dashboard/analysis/:campaignId" element={<AiAnalysisPage />} />
             <Route path="/dashboard/integrations" element={<IntegrationsPage />} />
