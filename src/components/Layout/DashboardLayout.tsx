@@ -17,7 +17,20 @@ import {
   SidebarHeader,
   SidebarFooter
 } from "@/components/ui/sidebar";
-import { BarChart3, LayoutDashboard, Lightbulb, PieChart, Settings, Users, Bot, Search } from "lucide-react";
+import { 
+  BarChart3, 
+  LayoutDashboard, 
+  Lightbulb, 
+  PieChart, 
+  Settings, 
+  Users, 
+  Bot, 
+  Search,
+  Bell,
+  Target,
+  Filter
+} from "lucide-react";
+import AlertNotifications from "../Dashboard/AlertNotifications";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -65,11 +78,43 @@ const DashboardSidebar = () => {
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+
+          <SidebarGroup className="mt-6">
+            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-4">Otimização IA</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu className="space-y-2">
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/recommendations') ? 'bg-advisor-purple/20 text-white' : ''}`}>
                     <a href="/dashboard/recommendations" className="flex items-center gap-3 px-4 py-3">
                       <Lightbulb className="h-5 w-5" />
                       <span className="font-medium">Recomendações IA</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/search-terms') ? 'bg-advisor-purple/20 text-white' : ''}`}>
+                    <a href="/dashboard/search-terms" className="flex items-center gap-3 px-4 py-3">
+                      <Search className="h-5 w-5" />
+                      <span className="font-medium">Termos de Pesquisa</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/ad-groups') ? 'bg-advisor-purple/20 text-white' : ''}`}>
+                    <a href="/dashboard/ad-groups" className="flex items-center gap-3 px-4 py-3">
+                      <Target className="h-5 w-5" />
+                      <span className="font-medium">Estrutura de Grupos</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/alerts') ? 'bg-advisor-purple/20 text-white' : ''}`}>
+                    <a href="/dashboard/alerts" className="flex items-center gap-3 px-4 py-3">
+                      <Bell className="h-5 w-5" />
+                      <span className="font-medium">Alertas Performance</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -149,14 +194,17 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                   </h1>
                   <p className="text-sm text-gray-500 mt-1">Vamos analisar o desempenho das suas campanhas hoje</p>
                 </div>
-                <div className="bg-white rounded-full shadow-sm px-4 py-2 w-full max-w-sm border border-gray-200 focus-within:ring-2 focus-within:ring-[#8AFF72]/20">
-                  <div className="flex items-center gap-2">
-                    <Search className="h-4 w-4 text-gray-400" />
-                    <input
-                      type="text"
-                      placeholder="Pesquisar campanhas..."
-                      className="flex-1 border-0 outline-none bg-transparent text-gray-700 placeholder-gray-400"
-                    />
+                <div className="flex items-center gap-4">
+                  <AlertNotifications />
+                  <div className="bg-white rounded-full shadow-sm px-4 py-2 w-full max-w-sm border border-gray-200 focus-within:ring-2 focus-within:ring-[#8AFF72]/20">
+                    <div className="flex items-center gap-2">
+                      <Search className="h-4 w-4 text-gray-400" />
+                      <input
+                        type="text"
+                        placeholder="Pesquisar campanhas..."
+                        className="flex-1 border-0 outline-none bg-transparent text-gray-700 placeholder-gray-400"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>

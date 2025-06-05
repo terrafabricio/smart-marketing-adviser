@@ -21,6 +21,9 @@ import ProfilePage from "./pages/dashboard/ProfilePage";
 import SettingsPage from "./pages/dashboard/SettingsPage";
 import RecommendationsPage from "./pages/dashboard/RecommendationsPage";
 import AiAnalysisPage from "./pages/dashboard/AiAnalysisPage";
+import SearchTermsPage from "./pages/dashboard/SearchTermsPage";
+import AdGroupsPage from "./pages/dashboard/AdGroupsPage";
+import AlertsPage from "./pages/dashboard/AlertsPage";
 
 // Static pages
 import AboutPage from "./pages/static/AboutPage";
@@ -56,6 +59,12 @@ const App = () => (
             <Route path="/dashboard/profile" element={<ProfilePage />} />
             <Route path="/dashboard/settings" element={<SettingsPage />} />
             <Route path="/dashboard/recommendations" element={<RecommendationsPage />} />
+            
+            {/* New optimization features */}
+            <Route path="/dashboard/search-terms" element={<SearchTermsPage />} />
+            <Route path="/dashboard/ad-groups" element={<AdGroupsPage />} />
+            <Route path="/dashboard/alerts" element={<AlertsPage />} />
+            <Route path="/dashboard/alerts/:alertId" element={<AlertsPage />} />
             
             {/* Static pages */}
             <Route path="/sobre-nos" element={<AboutPage />} />

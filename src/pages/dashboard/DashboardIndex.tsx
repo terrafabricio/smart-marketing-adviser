@@ -4,6 +4,7 @@ import DashboardLayout from "@/components/Layout/DashboardLayout";
 import KpiCards from "@/components/Dashboard/KpiCards";
 import Charts from "@/components/Dashboard/Charts";
 import AICampaignStatus from "@/components/Dashboard/AICampaignStatus";
+import NewFeaturesWidgets from "@/components/Dashboard/NewFeaturesWidgets";
 
 const DashboardIndex = () => {
   const campaignStatus = "needs-adjustment";
@@ -17,6 +18,7 @@ const DashboardIndex = () => {
         </div>
         
         <AICampaignStatus status={campaignStatus as "good" | "needs-adjustment" | "bad"} />
+        <NewFeaturesWidgets />
         <KpiCards />
         <Charts />
       </div>
