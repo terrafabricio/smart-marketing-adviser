@@ -215,6 +215,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               </div>
             </main>
             <Footer />
+            {/* Chat IA Button posicionado no canto inferior direito */}
+            <div className="fixed bottom-6 right-6 z-50">
+              <AiChatButton />
+            </div>
           </div>
         </div>
       </SidebarProvider>
