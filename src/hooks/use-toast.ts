@@ -55,6 +55,19 @@ interface State {
 
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>()
 
+function addToRemoveQueue(toastId: string) {
+  if (toastTimeouts.has(toastId)) {
+    clearTimeout(toastTimeouts.get(toastId)!)
+  }
+
+  const timeout = setTimeout(() => {
+    toastTimeouts.delete(toastId)
+    dispatch({ type: actionTypes.REMOVE_TOAST, toastId })
+  }, TOAST_REMOVE_DELAY)
+
+  toastTimeouts.set(toastId, timeout)
+}
+
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case actionTypes.ADD_TOAST:
@@ -138,7 +151,10 @@ function toast({ ...props }: Toast) {
       toast: { ...props, id },
     })
 
-  const dismiss = () => dispatch({ type: actionTypes.DISMISS_TOAST, toastId: id })
+  const dismiss = () => {
+    dispatch({ type: actionTypes.DISMISS_TOAST, toastId: id })
+    addToRemoveQueue(id)
+  }
 
   dispatch({
     type: actionTypes.ADD_TOAST,
@@ -170,12 +186,17 @@ function useToast() {
         listeners.splice(index, 1)
       }
     }
-  }, [state])
+  }, [])
 
   return {
     ...state,
     toast,
-    dismiss: (toastId?: string) => dispatch({ type: actionTypes.DISMISS_TOAST, toastId }),
+    dismiss: (toastId?: string) => {
+      dispatch({ type: actionTypes.DISMISS_TOAST, toastId })
+      if (toastId) {
+        addToRemoveQueue(toastId)
+      }
+    },
     remove: (toastId?: string) => dispatch({ type: actionTypes.REMOVE_TOAST, toastId }),
   }
 }
