@@ -1,3 +1,4 @@
+
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Footer from "./Footer";
@@ -44,27 +45,75 @@ const DashboardSidebar = () => {
   return (
     <Sidebar className="bg-advisor-dark-purple border-r-0">
       <div className="bg-advisor-dark-purple rounded-r-2xl min-h-full">
-        <SidebarHeader className="flex items-center justify-center py-6">
+        <SidebarHeader className="flex items-center justify-center py-4">
           <span className="text-[#8AFF72] text-xl font-bold">AdVisor-AI</span>
         </SidebarHeader>
-        <SidebarContent className="px-3">
+        <SidebarContent className="px-3 pb-20">
           <SidebarGroup>
-            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-4">Principal</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-3">Principal</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu className="space-y-2">
+              <SidebarMenu className="space-y-1">
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard') && !isActive('/dashboard/') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard" className="flex items-center gap-3 px-4 py-3">
-                      <LayoutDashboard className="h-5 w-5" />
-                      <span className="font-medium">Dashboard</span>
+                    <a href="/dashboard" className="flex items-center gap-3 px-3 py-2">
+                      <LayoutDashboard className="h-4 w-4" />
+                      <span className="font-medium text-sm">Dashboard</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/campaigns') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard/campaigns" className="flex items-center gap-3 px-4 py-3">
-                      <BarChart3 className="h-5 w-5" />
-                      <span className="font-medium">Campanhas</span>
+                    <a href="/dashboard/campaigns" className="flex items-center gap-3 px-3 py-2">
+                      <BarChart3 className="h-4 w-4" />
+                      <span className="font-medium text-sm">Campanhas</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+
+          <SidebarGroup className="mt-4">
+            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-3">Otimização IA</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu className="space-y-1">
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/recommendations') ? 'bg-advisor-purple/20 text-white' : ''}`}>
+                    <a href="/dashboard/recommendations" className="flex items-center gap-3 px-3 py-2">
+                      <Lightbulb className="h-4 w-4" />
+                      <span className="font-medium text-sm">Recomendações IA</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/search-terms') ? 'bg-advisor-purple/20 text-white' : ''}`}>
+                    <a href="/dashboard/search-terms" className="flex items-center gap-3 px-3 py-2">
+                      <Search className="h-4 w-4" />
+                      <span className="font-medium text-sm">Termos de Pesquisa</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/ad-groups') ? 'bg-advisor-purple/20 text-white' : ''}`}>
+                    <a href="/dashboard/ad-groups" className="flex items-center gap-3 px-3 py-2">
+                      <Target className="h-4 w-4" />
+                      <span className="font-medium text-sm">Estrutura de Grupos</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/alerts') ? 'bg-advisor-purple/20 text-white' : ''}`}>
+                    <a href="/dashboard/alerts" className="flex items-center gap-3 px-3 py-2">
+                      <Bell className="h-4 w-4" />
+                      <span className="font-medium text-sm">Alertas Performance</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/ai-analysis') ? 'bg-advisor-purple/20 text-white' : ''}`}>
+                    <a href="/dashboard/ai-analysis" className="flex items-center gap-3 px-3 py-2">
+                      <Bot className="h-4 w-4" />
+                      <span className="font-medium text-sm">Análise com IA</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -73,70 +122,22 @@ const DashboardSidebar = () => {
           </SidebarGroup>
 
           <SidebarGroup className="mt-6">
-            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-4">Otimização IA</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-3">Configurações</SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu className="space-y-2">
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/recommendations') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard/recommendations" className="flex items-center gap-3 px-4 py-3">
-                      <Lightbulb className="h-5 w-5" />
-                      <span className="font-medium">Recomendações IA</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/search-terms') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard/search-terms" className="flex items-center gap-3 px-4 py-3">
-                      <Search className="h-5 w-5" />
-                      <span className="font-medium">Termos de Pesquisa</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/ad-groups') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard/ad-groups" className="flex items-center gap-3 px-4 py-3">
-                      <Target className="h-5 w-5" />
-                      <span className="font-medium">Estrutura de Grupos</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/alerts') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard/alerts" className="flex items-center gap-3 px-4 py-3">
-                      <Bell className="h-5 w-5" />
-                      <span className="font-medium">Alertas Performance</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/ai-analysis') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard/ai-analysis" className="flex items-center gap-3 px-4 py-3">
-                      <Bot className="h-5 w-5" />
-                      <span className="font-medium">Análise com IA</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-
-          <SidebarGroup className="mt-8">
-            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-4">Configurações</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu className="space-y-2">
+              <SidebarMenu className="space-y-1">
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/profile') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard/profile" className="flex items-center gap-3 px-4 py-3">
-                      <Users className="h-5 w-5" />
-                      <span className="font-medium">Perfil</span>
+                    <a href="/dashboard/profile" className="flex items-center gap-3 px-3 py-2">
+                      <Users className="h-4 w-4" />
+                      <span className="font-medium text-sm">Perfil</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton asChild className={`text-sidebar-foreground hover:bg-advisor-purple/10 hover:text-white transition-colors duration-200 rounded-lg ${isActive('/dashboard/settings') ? 'bg-advisor-purple/20 text-white' : ''}`}>
-                    <a href="/dashboard/settings" className="flex items-center gap-3 px-4 py-3">
-                      <Settings className="h-5 w-5" />
-                      <span className="font-medium">Configurações</span>
+                    <a href="/dashboard/settings" className="flex items-center gap-3 px-3 py-2">
+                      <Settings className="h-4 w-4" />
+                      <span className="font-medium text-sm">Configurações</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -203,7 +204,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             </main>
             <Footer />
           </div>
-          <div className="fixed bottom-6 left-6 z-50">
+          <div className="fixed bottom-4 left-4 z-50 scale-75">
             <AiChatButton />
           </div>
         </div>
