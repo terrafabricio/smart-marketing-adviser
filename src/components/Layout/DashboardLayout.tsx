@@ -48,9 +48,9 @@ const DashboardSidebar = () => {
         <SidebarHeader className="flex items-center justify-center py-3">
           <span className="text-[#8AFF72] text-xl font-bold">AdVisor-AI</span>
         </SidebarHeader>
-        <SidebarContent className="px-3 pb-20">
+        <SidebarContent className="px-3 pb-16">
           <SidebarGroup>
-            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-1.5">Principal</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-1">Principal</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu className="space-y-0.5">
                 <SidebarMenuItem>
@@ -73,8 +73,8 @@ const DashboardSidebar = () => {
             </SidebarGroupContent>
           </SidebarGroup>
 
-          <SidebarGroup className="mt-1.5">
-            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-1.5">Configurações</SidebarGroupLabel>
+          <SidebarGroup className="mt-1">
+            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-1">Configurações</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu className="space-y-0.5">
                 <SidebarMenuItem>
@@ -97,8 +97,8 @@ const DashboardSidebar = () => {
             </SidebarGroupContent>
           </SidebarGroup>
 
-          <SidebarGroup className="mt-1.5">
-            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-1.5">Otimização IA</SidebarGroupLabel>
+          <SidebarGroup className="mt-1">
+            <SidebarGroupLabel className="text-gray-400 text-xs uppercase tracking-wider mb-1">Otimização IA</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu className="space-y-0.5">
                 <SidebarMenuItem>
@@ -204,7 +204,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             </main>
             <Footer />
           </div>
-          <div className="fixed bottom-3 left-3 z-50 scale-50">
+          <div className="fixed bottom-6 left-6 z-50 scale-75">
             <AiChatButton />
           </div>
         </div>
