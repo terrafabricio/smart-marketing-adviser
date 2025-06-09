@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Footer from "./Footer";
@@ -145,9 +144,6 @@ const DashboardSidebar = () => {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
-        <SidebarFooter className="p-4">
-          <AiChatButton />
-        </SidebarFooter>
       </div>
     </Sidebar>
   );
@@ -206,6 +202,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               </div>
             </main>
             <Footer />
+          </div>
+          <div className="fixed bottom-6 left-6 z-50">
+            <AiChatButton />
           </div>
         </div>
       </SidebarProvider>
