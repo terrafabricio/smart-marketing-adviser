@@ -9,6 +9,41 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      ad_groups: {
+        Row: {
+          campaign_id: string | null
+          created_at: string | null
+          google_ad_group_id: number | null
+          id: number
+          name: string | null
+          status: string | null
+        }
+        Insert: {
+          campaign_id?: string | null
+          created_at?: string | null
+          google_ad_group_id?: number | null
+          id?: number
+          name?: string | null
+          status?: string | null
+        }
+        Update: {
+          campaign_id?: string | null
+          created_at?: string | null
+          google_ad_group_id?: number | null
+          id?: number
+          name?: string | null
+          status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ad_groups_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ai_recommendations: {
         Row: {
           campaign_id: string | null
@@ -256,6 +291,115 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      keywords: {
+        Row: {
+          ad_group_id: number | null
+          created_at: string | null
+          google_keyword_id: number | null
+          id: number
+          match_type: string | null
+          status: string | null
+          text: string | null
+        }
+        Insert: {
+          ad_group_id?: number | null
+          created_at?: string | null
+          google_keyword_id?: number | null
+          id?: number
+          match_type?: string | null
+          status?: string | null
+          text?: string | null
+        }
+        Update: {
+          ad_group_id?: number | null
+          created_at?: string | null
+          google_keyword_id?: number | null
+          id?: number
+          match_type?: string | null
+          status?: string | null
+          text?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "keywords_ad_group_id_fkey"
+            columns: ["ad_group_id"]
+            isOneToOne: false
+            referencedRelation: "ad_groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      search_terms: {
+        Row: {
+          ad_group_id: number | null
+          clicks: number | null
+          conversions: number | null
+          cost: number | null
+          created_at: string | null
+          date: string | null
+          id: number
+          impressions: number | null
+          term_text: string | null
+        }
+        Insert: {
+          ad_group_id?: number | null
+          clicks?: number | null
+          conversions?: number | null
+          cost?: number | null
+          created_at?: string | null
+          date?: string | null
+          id?: number
+          impressions?: number | null
+          term_text?: string | null
+        }
+        Update: {
+          ad_group_id?: number | null
+          clicks?: number | null
+          conversions?: number | null
+          cost?: number | null
+          created_at?: string | null
+          date?: string | null
+          id?: number
+          impressions?: number | null
+          term_text?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "search_terms_ad_group_id_fkey"
+            columns: ["ad_group_id"]
+            isOneToOne: false
+            referencedRelation: "ad_groups"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_analysis_settings: {
+        Row: {
+          cpa_target: number | null
+          created_at: string | null
+          global_negative_keywords: string[] | null
+          id: number
+          roi_target: number | null
+          user_id: string
+        }
+        Insert: {
+          cpa_target?: number | null
+          created_at?: string | null
+          global_negative_keywords?: string[] | null
+          id?: number
+          roi_target?: number | null
+          user_id: string
+        }
+        Update: {
+          cpa_target?: number | null
+          created_at?: string | null
+          global_negative_keywords?: string[] | null
+          id?: number
+          roi_target?: number | null
+          user_id?: string
+        }
+        Relationships: []
       }
       users: {
         Row: {
