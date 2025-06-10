@@ -28,7 +28,7 @@ const AnimatedAiButton: React.FC<AnimatedAiButtonProps> = ({ onClick }) => {
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative w-32 h-32 p-0 bg-transparent border-none shadow-none hover:bg-transparent group"
+      className="relative w-40 h-32 p-0 bg-transparent border-none shadow-none hover:bg-transparent group"
       aria-label="Chat com IA"
     >
       <div className="relative w-full h-full">
@@ -37,15 +37,15 @@ const AnimatedAiButton: React.FC<AnimatedAiButtonProps> = ({ onClick }) => {
           <div className="absolute inset-0 animate-organic-deform">
             {/* Anel principal com glow intenso */}
             <div className="absolute inset-0">
-              <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-purple-400 border-r-cyan-300 animate-pulse-organic shadow-[0_0_30px_rgba(168,85,247,0.8)] blur-[2px]"></div>
-              <div className="absolute -inset-1 rounded-full border-4 border-transparent border-l-purple-400 border-b-cyan-300 animate-pulse-organic-delayed shadow-[0_0_25px_rgba(34,197,94,0.6)] blur-[2px]"></div>
-              <div className="absolute inset-1 rounded-full border-4 border-transparent border-t-cyan-300 border-l-purple-400 animate-pulse-organic-delayed-2 shadow-[0_0_20px_rgba(59,130,246,0.7)] blur-[2px]"></div>
+              <div className="absolute inset-0 rounded-2xl border-4 border-transparent border-t-purple-400 border-r-cyan-300 animate-pulse-organic shadow-[0_0_30px_rgba(168,85,247,0.8)] blur-[2px]"></div>
+              <div className="absolute -inset-1 rounded-2xl border-4 border-transparent border-l-purple-400 border-b-cyan-300 animate-pulse-organic-delayed shadow-[0_0_25px_rgba(34,197,94,0.6)] blur-[2px]"></div>
+              <div className="absolute inset-1 rounded-2xl border-4 border-transparent border-t-cyan-300 border-l-purple-400 animate-pulse-organic-delayed-2 shadow-[0_0_20px_rgba(59,130,246,0.7)] blur-[2px]"></div>
             </div>
             
             {/* Camada de glow adicional */}
             <div className="absolute inset-2">
-              <div className="absolute inset-0 rounded-full border-2 border-purple-500 opacity-60 animate-pulse shadow-[0_0_40px_rgba(168,85,247,0.9),inset_0_0_20px_rgba(168,85,247,0.3)]"></div>
-              <div className="absolute -inset-1 rounded-full border-2 border-cyan-400 opacity-40 animate-pulse-organic shadow-[0_0_35px_rgba(34,197,94,0.7),inset_0_0_15px_rgba(34,197,94,0.2)]"></div>
+              <div className="absolute inset-0 rounded-xl border-2 border-purple-500 opacity-60 animate-pulse shadow-[0_0_40px_rgba(168,85,247,0.9),inset_0_0_20px_rgba(168,85,247,0.3)]"></div>
+              <div className="absolute -inset-1 rounded-xl border-2 border-cyan-400 opacity-40 animate-pulse-organic shadow-[0_0_35px_rgba(34,197,94,0.7),inset_0_0_15px_rgba(34,197,94,0.2)]"></div>
             </div>
             
             {/* Partículas flutuantes */}
@@ -59,7 +59,7 @@ const AnimatedAiButton: React.FC<AnimatedAiButtonProps> = ({ onClick }) => {
         </div>
         
         {/* Conteúdo interno com efeito neon */}
-        <div className="absolute inset-3 rounded-full bg-[#0f0a29] flex items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.8),0_0_40px_rgba(168,85,247,0.4)] border border-purple-500/20">
+        <div className="absolute inset-3 rounded-xl bg-[#0f0a29] flex items-center justify-center shadow-[inset_0_0_20px_rgba(0,0,0,0.8),0_0_40px_rgba(168,85,247,0.4)] border border-purple-500/20">
           <div className="text-center text-white text-[11px] font-bold leading-tight px-1">
             {showGreeting && (
               <>
@@ -82,10 +82,10 @@ const AnimatedAiButton: React.FC<AnimatedAiButtonProps> = ({ onClick }) => {
         </div>
         
         {/* Efeito de hover intensificado */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300 shadow-[0_0_60px_rgba(168,85,247,0.8)]"></div>
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300 shadow-[0_0_60px_rgba(168,85,247,0.8)]"></div>
         
         {/* Anel externo de glow */}
-        <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-purple-500/20 via-transparent to-cyan-400/20 animate-pulse shadow-[0_0_50px_rgba(168,85,247,0.3)]"></div>
+        <div className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-purple-500/20 via-transparent to-cyan-400/20 animate-pulse shadow-[0_0_50px_rgba(168,85,247,0.3)]"></div>
       </div>
     </Button>
   );
