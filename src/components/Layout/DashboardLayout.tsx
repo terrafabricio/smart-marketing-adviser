@@ -153,6 +153,10 @@ const DashboardSidebar = () => {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const { user, isLoading } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Verificar se estamos na página inicial do dashboard
+  const isMainDashboard = location.pathname === '/dashboard';
 
   React.useEffect(() => {
     if (!isLoading && !user) {
@@ -176,13 +180,15 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           <div className="flex flex-col flex-1">
             <header className="bg-transparent px-6 py-4">
               <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <div>
-                  <h1 className="text-2xl font-semibold text-foreground">
-                    Bem-vindo de volta, {user?.user_metadata?.name?.split(' ')[0] || 'Usuário'} 👋
-                  </h1>
-                  <p className="text-sm text-gray-500 mt-1">Vamos analisar o desempenho das suas campanhas hoje</p>
-                </div>
-                <div className="flex items-center gap-4">
+                {isMainDashboard && (
+                  <div>
+                    <h1 className="text-2xl font-semibold text-foreground">
+                      Bem-vindo de volta, {user?.user_metadata?.name?.split(' ')[0] || 'Usuário'} 👋
+                    </h1>
+                    <p className="text-sm text-gray-500 mt-1">Vamos analisar o desempenho das suas campanhas hoje</p>
+                  </div>
+                )}
+                <div className={`flex items-center gap-4 ${!isMainDashboard ? 'ml-auto' : ''}`}>
                   <AlertNotifications />
                   <div className="bg-white rounded-full shadow-sm px-4 py-2 w-full max-w-sm border border-gray-200 focus-within:ring-2 focus-within:ring-[#8AFF72]/20">
                     <div className="flex items-center gap-2">
@@ -204,7 +210,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
             </main>
             <Footer />
           </div>
-          <div className="fixed bottom-6 left-6 z-50 scale-75">
+          <div className="fixed bottom-8 left-8 z-50">
             <AiChatButton />
           </div>
         </div>
